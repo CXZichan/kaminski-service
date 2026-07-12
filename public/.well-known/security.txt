@@ -1,0 +1,4 @@
+Contact: mailto:angebote@kaminski-service.de
+Preferred-Languages: de
+Policy: https://kaminski-service.de/datenschutz
+Expires: 2027-07-13T00:00:00Z

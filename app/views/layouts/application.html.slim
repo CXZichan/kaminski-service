@@ -1,0 +1,28 @@
+doctype html
+html lang="de"
+  head
+    title = @meta_title || "Kaminski Service"
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    meta name="description" content=(@meta_description || "Gebäude- und Reinigungsservice von Kaminski Service in Celle, Wietze und Umgebung.")
+    meta name="theme-color" content="#0B1F33"
+    link rel="canonical" href=request.original_url
+    meta property="og:title" content=(@meta_title || "Kaminski Service")
+    meta property="og:description" content=(@meta_description || "Gebäude- und Reinigungsservice von Kaminski Service in Celle, Wietze und Umgebung.")
+    meta property="og:type" content="website"
+    meta property="og:image" content=image_url("social-share.svg")
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag :app, "data-turbo-track": "reload"
+    = javascript_importmap_tags
+    - if company_config.local_business_ready?
+      script type="application/ld+json"
+        == { "@context": "https://schema.org", "@type": "LocalBusiness", name: company_config.display_name, address: company_config.full_address, telephone: company_config.phone, email: company_config.contact_email }.to_json
+  body
+    a.skip-link href="#main" Zum Inhalt springen
+    = render "shared/header"
+    - if notice.present?
+      p.flash role="status" = notice
+    main#main
+      = yield
+    = render "shared/footer"
+    = render "shared/consent_banner"

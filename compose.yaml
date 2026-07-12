@@ -1,0 +1,43 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        RUBY_VERSION: 3.4.5
+    command: bash -lc "bundle install && bin/rails db:prepare && bin/dev"
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      CONTACT_RECIPIENT_EMAIL: angebote@kaminski-service.de
+      DEFAULT_FROM_EMAIL: website@kaminski-service.de
+      ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: dev-test-primary-key-32-bytes-long
+      ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: dev-test-deterministic-key-32bytes
+      ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: dev-test-encryption-salt
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/rails
+    depends_on:
+      db:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres:

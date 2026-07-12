@@ -1,0 +1,22 @@
+nav.breadcrumb aria-label="Breadcrumb"
+  = link_to "Startseite", root_path
+  span /
+  = link_to "Leistungen", services_path
+  span /
+  span = @service.title
+section.page-hero
+  .container
+    p.eyebrow Leistung
+    h1 = @service.title
+    p = @service.summary
+section.section
+  .detail-grid
+    div
+      = image_tag @service.image, alt: "", width: 720, height: 405
+      h2 Was typischerweise dazugehört
+      ul.check-list
+        - @service.tasks.each do |task|
+          li = task
+      p Den tatsächlichen Leistungsumfang stimmen wir vor dem Angebot persönlich mit Ihnen ab.
+    aside
+      = render "contact_requests/form", contact_request: @contact_request

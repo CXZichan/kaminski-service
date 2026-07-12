@@ -1,0 +1,20 @@
+section.page-hero
+  .container
+    p.eyebrow Über uns
+    h1 Lernen Sie uns persönlich kennen
+    p Hier entsteht die persönliche Vorstellung unserer Arbeitsweise, unseres Einsatzgebiets und der Menschen hinter der Reinigung.
+section.section
+  .about-grid
+    = image_tag "team-placeholder.svg", alt: "Platzhalter für ein Portrait- oder Teambild", width: 720, height: 540
+    div
+      h2 Unternehmensprofil
+      p = company_config.company["about_text"]
+      p Bitte ergänzen Sie echte Informationen zu Ansprechpartner, Arbeitsweise und Einsatzgebiet, bevor die Seite live geht.
+      dl.contact-facts
+        dt Ansprechpartner
+        dd = company_config.company["representative"]
+        dt Anschrift
+        dd = company_config.full_address
+        dt E-Mail
+        dd = company_config.contact_email
+      = link_to "Kostenlos anfragen", contact_path, class: "btn btn-primary"

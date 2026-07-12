@@ -1,0 +1,19 @@
+h1 Neue Anfrage über die Website
+p Eine neue unverbindliche Anfrage wurde gespeichert.
+dl
+  dt Name
+  dd = @contact_request.name
+  dt Unternehmen
+  dd = @contact_request.company.presence || "Nicht angegeben"
+  dt E-Mail
+  dd = @contact_request.email
+  dt Telefon
+  dd = @contact_request.phone.presence || "Nicht angegeben"
+  dt Kundentyp
+  dd = @contact_request.customer_type == "business" ? "Gewerbekunde" : "Privatkunde"
+  dt Leistung
+  dd = @contact_request.service_label
+  dt Ort
+  dd = "#{@contact_request.postal_code} #{@contact_request.city}"
+  dt Nachricht
+  dd = simple_format(@contact_request.message)

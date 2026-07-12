@@ -1,0 +1,12 @@
+Neue Anfrage über die Website
+
+Name: <%= @contact_request.name %>
+Unternehmen: <%= @contact_request.company.presence || "Nicht angegeben" %>
+E-Mail: <%= @contact_request.email %>
+Telefon: <%= @contact_request.phone.presence || "Nicht angegeben" %>
+Kundentyp: <%= @contact_request.customer_type == "business" ? "Gewerbekunde" : "Privatkunde" %>
+Leistung: <%= @contact_request.service_label %>
+Ort: <%= @contact_request.postal_code %> <%= @contact_request.city %>
+
+Nachricht:
+<%= @contact_request.message %>

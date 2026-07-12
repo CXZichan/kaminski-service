@@ -1,0 +1,53 @@
+company:
+  display_name: "Kaminski Service"
+  legal_name: "[BITTE EINTRAGEN]"
+  legal_form: "[BITTE EINTRAGEN]"
+  representative: "[BITTE EINTRAGEN]"
+  founded_year:
+  team_size:
+  about_text: "Wir sind Ihr Ansprechpartner für gründliche Reinigungsarbeiten rund um private und gewerbliche Objekte in Celle, Wietze und Umgebung. Den Umfang stimmen wir persönlich ab, arbeiten strukturiert und legen Wert auf verlässliche Kommunikation."
+  street: "[BITTE EINTRAGEN]"
+  postal_code: "[BITTE EINTRAGEN]"
+  city: "Wietze"
+  country: "Deutschland"
+
+contact:
+  phone: "[BITTE EINTRAGEN]"
+  mobile:
+  email: "angebote@kaminski-service.de"
+  whatsapp:
+  response_time_claim:
+
+business:
+  register_court:
+  register_number:
+  vat_id:
+  business_id:
+  supervisory_authority:
+  editorial_responsible:
+  dispute_resolution_participation:
+  dispute_resolution_body:
+
+service_area:
+  headline: "Celle, Wietze und Umgebung"
+  cities:
+    - Celle
+    - Wietze
+
+hosting:
+  provider_name: "[BITTE EINTRAGEN]"
+  provider_address: "[BITTE EINTRAGEN]"
+  server_country: "[BITTE EINTRAGEN]"
+
+email_provider:
+  provider_name: "[BITTE EINTRAGEN]"
+  provider_address: "[BITTE EINTRAGEN]"
+  server_country: "[BITTE EINTRAGEN]"
+
+features:
+  reviews: false
+  certifications: false
+  analytics: false
+  external_media: false
+  embedded_maps: false
+  whatsapp: false

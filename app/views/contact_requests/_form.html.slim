@@ -1,0 +1,49 @@
+= turbo_frame_tag "contact_form" do
+  .form-card
+    h2 Unverbindliche Anfrage stellen
+    p Teilen Sie uns kurz mit, welches Objekt gereinigt werden soll und welche Leistung Sie benötigen.
+    - if contact_request.errors.any?
+      .form-errors role="alert"
+        p Bitte prüfen Sie die markierten Felder.
+        ul
+          - contact_request.errors.full_messages.each do |message|
+            li = message
+    = form_with model: contact_request, url: contact_requests_path, data: { turbo: true }, class: "contact-form" do |f|
+      .hp-field aria-hidden="true"
+        label for="website" Website
+        input#website type="text" name="website" tabindex="-1" autocomplete="off"
+      = f.hidden_field :displayed_at, value: (contact_request.displayed_at || Time.current).iso8601
+      .field
+        = f.label :name, "Name *"
+        = f.text_field :name, required: true, autocomplete: "name"
+      .field
+        = f.label :company, "Unternehmen"
+        = f.text_field :company, autocomplete: "organization"
+      .field-grid
+        .field
+          = f.label :email, "E-Mail-Adresse *"
+          = f.email_field :email, required: true, autocomplete: "email"
+        .field
+          = f.label :phone, "Telefonnummer"
+          = f.telephone_field :phone, autocomplete: "tel"
+      .field-grid
+        .field
+          = f.label :customer_type, "Kundentyp"
+          = f.select :customer_type, [["Privatkunde", "private"], ["Gewerbekunde", "business"]], {}, required: true
+        .field
+          = f.label :service, "Gewünschte Leistung"
+          = f.select :service, ServiceCatalog.options, {}, required: true
+      .field-grid
+        .field
+          = f.label :postal_code, "Postleitzahl *"
+          = f.text_field :postal_code, required: true, autocomplete: "postal-code"
+        .field
+          = f.label :city, "Ort *"
+          = f.text_field :city, required: true, autocomplete: "address-level2"
+      .field
+        = f.label :message, "Nachricht *"
+        = f.text_area :message, required: true, rows: 5, maxlength: 2000
+      = f.submit "Kostenloses Angebot anfordern", class: "btn btn-primary full"
+      p.privacy-note
+        | Ihre Angaben nutzen wir ausschließlich zur Bearbeitung Ihrer Anfrage.
+        =< link_to "Datenschutzerklärung", privacy_path

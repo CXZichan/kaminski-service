@@ -1,0 +1,45 @@
+section.page-hero
+  .container.narrow
+    p.eyebrow Rechtliches
+    h1 Impressum
+section.section
+  .container.narrow.legal-copy
+    h2 Angaben nach § 5 DDG
+    p
+      strong = company_config.company["legal_name"]
+      br
+      = company_config.company["legal_form"]
+      br
+      = company_config.full_address
+
+    h2 Vertreten durch
+    p = company_config.company["representative"]
+
+    h2 Kontakt
+    p
+      | E-Mail:
+      =< mail_to company_config.contact_email
+      br
+      | Telefon:
+      =< company_config.phone
+
+    - if company_config.business["register_court"].present?
+      h2 Registereintrag
+      p
+        = company_config.business["register_court"]
+        br
+        = company_config.business["register_number"]
+
+    - if company_config.business["vat_id"].present?
+      h2 Umsatzsteuer-ID
+      p = company_config.business["vat_id"]
+
+    - if company_config.business["business_id"].present?
+      h2 Wirtschafts-Identifikationsnummer
+      p = company_config.business["business_id"]
+
+    h2 Verbraucherstreitbeilegung
+    p = company_config.business["dispute_resolution_participation"].presence || "[BITTE EINTRAGEN]: Teilnahme oder Nichtteilnahme an einem Streitbeilegungsverfahren nach § 36 VSBG prüfen."
+
+    h2 Hinweis
+    p Dieses Impressum ist technisch vorbereitet und ersetzt keine rechtliche Prüfung. Alle Platzhalter müssen vor dem Go-live ersetzt werden.

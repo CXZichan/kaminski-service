@@ -1,0 +1,21 @@
+header.site-header data-controller="header menu" data-header-compact-class="is-compact"
+  - if company_config.phone.present? && !company_config.phone.include?("[BITTE")
+    .contact-strip
+      span = company_config.phone
+      span = company_config.contact_email
+      span = company_config.service_area["headline"]
+  .nav-shell
+    = link_to root_path, class: "brand", aria: { label: "Kaminski Service Startseite" } do
+      span.brand-mark KS
+      span = company_config.display_name
+    button.menu-button type="button" data-action="menu#toggle" data-menu-target="button" aria-controls="primary-navigation" aria-expanded="false"
+      span Menü
+    nav#primary-navigation.primary-nav data-menu-target="panel"
+      = link_to "Startseite", root_path
+      = link_to "Leistungen", services_path
+      = link_to "Vorteile", root_path(anchor: "vorteile")
+      = link_to "Über uns", about_path
+      = link_to "Referenzen", root_path(anchor: "referenzen")
+      = link_to "FAQ", root_path(anchor: "faq")
+      = link_to "Kontakt", contact_path
+      = link_to "Kostenlos anfragen", contact_path, class: "btn btn-primary"

@@ -1,0 +1,20 @@
+section.page-hero
+  .container
+    p.eyebrow Leistungen
+    h1 Reinigungsleistungen für private und gewerbliche Objekte
+    p Wählen Sie eine Leistung aus der Übersicht. Der konkrete Umfang wird vor einem Angebot individuell abgestimmt.
+section.section
+  .service-grid
+    - @services.each do |service|
+      article.service-card
+        = image_tag service.image, alt: "", loading: "lazy", width: 640, height: 360
+        .service-card-body
+          h2 = service.title
+          p = service.summary
+          ul
+            - service.tasks.each do |task|
+              li = task
+          = link_to "Zur Detailseite", service_path(service.slug), class: "btn btn-secondary"
+section.section.alt
+  .container.narrow
+    = render "contact_requests/form", contact_request: @contact_request

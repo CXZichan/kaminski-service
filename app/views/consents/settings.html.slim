@@ -1,0 +1,26 @@
+section.page-hero
+  .container.narrow
+    p.eyebrow Datenschutz
+    h1 Cookie-Einstellungen
+    p Notwendige Cookies sind immer aktiv. Statistik und externe Medien sind aktuell deaktiviert, bleiben aber technisch vorbereitet.
+section.section
+  .container.narrow
+    = form_with url: consent_path, method: :post, class: "consent-form" do
+      .consent-option
+        input type="checkbox" checked=true disabled=true
+        div
+          h2 Notwendig
+          p Erforderlich für Sicherheit, Formularschutz und Speicherung Ihrer Entscheidung.
+      .consent-option
+        = check_box_tag "categories[]", "statistics", consent_categories.include?("statistics"), disabled: !company_config.feature_enabled?(:analytics)
+        div
+          h2 Statistik
+          p Aktuell deaktiviert. Es wird kein Statistikdienst geladen.
+      .consent-option
+        = check_box_tag "categories[]", "external_media", consent_categories.include?("external_media"), disabled: !company_config.feature_enabled?(:external_media)
+        div
+          h2 Externe Medien
+          p Aktuell deaktiviert. Google Maps, Videos oder externe Widgets werden nicht eingebunden.
+      .consent-actions
+        = submit_tag "Einstellungen speichern", class: "btn btn-primary"
+    = button_to "Nur notwendige", consent_path, params: { categories: [] }, class: "btn btn-secondary"

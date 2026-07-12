@@ -1,0 +1,69 @@
+section.page-hero
+  .container.narrow
+    p.eyebrow Datenschutz
+    h1 Datenschutzerklärung
+section.section
+  .container.narrow.legal-copy
+    h2 1. Verantwortlicher
+    p
+      = company_config.company["legal_name"]
+      br
+      = company_config.full_address
+      br
+      | E-Mail:
+      =< mail_to company_config.contact_email
+
+    h2 2. Datenschutzbeauftragter
+    p [BITTE EINTRAGEN]: Prüfen, ob ein Datenschutzbeauftragter benannt werden muss.
+
+    h2 3. Hosting und Server-Logdateien
+    p
+      | Hosting-Anbieter:
+      =< company_config.hosting["provider_name"]
+      | . Serverstandort:
+      =< company_config.hosting["server_country"]
+      | . Beim Besuch der Website werden technisch erforderliche Server-Logdaten verarbeitet. Es werden keine vollständigen IP-Adressen im Kontaktformular gespeichert.
+
+    h2 4. TLS-Verschlüsselung
+    p Diese Website soll im Produktionsbetrieb ausschließlich verschlüsselt per HTTPS ausgeliefert werden.
+
+    h2 5. Kontaktformular
+    p Personenbezogene Angaben aus dem Formular werden zur Bearbeitung Ihrer Anfrage verarbeitet. Die Felder Name, Unternehmen, E-Mail, Telefon, Postleitzahl, Ort und Nachricht werden in der Datenbank verschlüsselt gespeichert.
+
+    h2 6. Kontakt per E-Mail und Telefon
+    p Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir Ihre Angaben zur Bearbeitung der Anfrage und möglicher Anschlussfragen.
+
+    h2 7. Zwecke und Rechtsgrundlagen
+    p Die Verarbeitung erfolgt zur Durchführung vorvertraglicher Maßnahmen, zur Kommunikation und zum sicheren Betrieb der Website. Einwilligungen für optionale Dienste werden nur abgefragt, wenn solche Dienste aktiviert sind.
+
+    h2 8. Empfänger und Auftragsverarbeiter
+    p
+      | Mailanbieter:
+      =< company_config.email_provider["provider_name"]
+      | . Weitere Auftragsverarbeiter sind vor Veröffentlichung zu prüfen und einzutragen.
+
+    h2 9. Speicherdauer
+    p Gewöhnliche Website-Anfragen werden gemäß konfigurierter Aufbewahrungsdauer verarbeitet und anschließend gelöscht. Vertrags- oder steuerrechtlich relevante Unterlagen sind davon nicht pauschal umfasst.
+
+    h2 10. Cookies und Consent-Verwaltung
+    p Notwendige Cookies dienen dem Betrieb der Website, insbesondere Sitzungsschutz, CSRF-Schutz und Speicherung Ihrer Cookie-Entscheidung.
+
+    - if company_config.feature_enabled?(:analytics)
+      h2 11. Statistikdienste
+      p [BITTE EINTRAGEN]: Aktivierter Statistikdienst muss konkret beschrieben werden.
+
+    - if company_config.feature_enabled?(:external_media)
+      h2 12. Externe Medien
+      p [BITTE EINTRAGEN]: Aktivierte externe Medien müssen konkret beschrieben werden.
+
+    h2 Betroffenenrechte
+    p Sie haben nach Maßgabe der gesetzlichen Vorgaben Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch und Beschwerde bei einer zuständigen Aufsichtsbehörde.
+
+    h2 Widerruf und Widerspruch
+    p Erteilte Einwilligungen können mit Wirkung für die Zukunft widerrufen werden. Cookie-Einstellungen können jederzeit erneut geöffnet werden.
+
+    h2 Pflicht zur Bereitstellung und automatisierte Entscheidungen
+    p Für das Kontaktformular sind die Pflichtfelder erforderlich, damit die Anfrage bearbeitet werden kann. Eine automatisierte Entscheidungsfindung findet nicht statt.
+
+    h2 Aktualisierung
+    p Stand: 13. Juli 2026. Vor Veröffentlichung müssen alle TODOs, Anbieterangaben und Rechtsgrundlagen geprüft werden.

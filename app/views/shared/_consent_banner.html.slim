@@ -1,0 +1,8 @@
+- unless cookies.encrypted[:kaminski_consent].present?
+  section.consent-banner aria-label="Cookie-Hinweis"
+    h2 Cookie-Einstellungen
+    p Wir verwenden notwendige Cookies für den Betrieb der Website. Statistik und externe Medien sind aktuell deaktiviert und werden ohne Einwilligung nicht geladen.
+    .consent-actions
+      = button_to "Alle akzeptieren", consent_path, params: { categories: %w[statistics external_media] }, class: "btn btn-secondary"
+      = button_to "Nur notwendige", consent_path, params: { categories: [] }, class: "btn btn-secondary"
+      = link_to "Einstellungen", cookie_settings_path, class: "btn btn-link"

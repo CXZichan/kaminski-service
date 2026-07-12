@@ -1,0 +1,20 @@
+de:
+  activerecord:
+    attributes:
+      contact_request:
+        customer_type: Kundentyp
+        service: Leistung
+        name: Name
+        company: Unternehmen
+        email: E-Mail-Adresse
+        phone: Telefonnummer
+        postal_code: Postleitzahl
+        city: Ort
+        message: Nachricht
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "muss ausgefüllt werden"
+      invalid: "ist ungültig"
+      inclusion: "ist nicht gültig"
+      too_long: "ist zu lang"

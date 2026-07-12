@@ -1,0 +1,147 @@
+section.hero
+  = image_tag "hero-cleaning-service.png", alt: "", class: "hero-bg", width: 1600, height: 900
+  .hero-overlay
+  .hero-inner
+    .hero-copy
+      p.eyebrow Gebäudereinigung in #{company_config.service_area["headline"]}
+      h1 Gebäudereinigung für Celle, Wietze und Umgebung.
+      p.lead Ob Büro, Treppenhaus, Glasfläche oder Privathaushalt: Wir sorgen für gründliche Reinigung mit klarer Abstimmung, planbaren Terminen und einem Angebot, das zu Ihrem Objekt passt.
+      ul.trust-list
+        li Persönliche Abstimmung vor dem Angebot
+        li Klare Leistungen ohne unnötige Versprechen
+        li Termine passend zu Objekt und Nutzung
+      .hero-actions
+        = link_to "Kostenloses Angebot anfordern", contact_path, class: "btn btn-primary"
+        = mail_to company_config.contact_email, "E-Mail schreiben", class: "btn btn-ghost"
+      .hero-proof aria-label="Vertrauensmerkmale"
+        span Für Privat- und Gewerbekunden
+        span Hauptsitz in Wietze
+        span Einsatzgebiet Celle
+    .hero-form
+      = render "contact_requests/form", contact_request: @contact_request
+
+section.trust-bar aria-label="Vertrauenselemente"
+  - ["Persönlicher Ansprechpartner", "Schnelle Rückmeldung", "Transparente Angebote", "Flexible Termine", "Sorgfältige Ausführung"].each do |item|
+    span = item
+
+section.section
+  .section-head
+    p.eyebrow Privat und Gewerbe
+    h2 Für Objekte, die zuverlässig gepflegt werden sollen
+    p Von der regelmäßigen Unterhaltsreinigung bis zur einzelnen Sonderreinigung: Wir klären zuerst den tatsächlichen Bedarf und erstellen daraus ein nachvollziehbares Angebot.
+  .split-cards
+    article.info-card
+      h3 Für Gewerbekunden
+      p Saubere Arbeits- und Kundenbereiche unterstützen einen professionellen Eindruck und reibungslose Abläufe im Alltag.
+      ul
+        - ["Büros", "Praxen", "Ladenflächen", "Hausverwaltungen", "Gewerbeimmobilien", "Baustellen"].each do |item|
+          li = item
+    article.info-card
+      h3 Für Privatkunden
+      p Für private Haushalte übernehmen wir vereinbarte Reinigungsarbeiten gründlich und mit Blick auf Ihre Räume und Termine.
+      ul
+        - ["Wohnungen", "Einfamilienhäuser", "Fensterreinigung", "Grundreinigung", "Umzugsreinigung", "individuell vereinbarte Reinigungsarbeiten"].each do |item|
+          li = item
+
+section#leistungen.section.alt
+  .section-head
+    p.eyebrow Leistungen
+    h2 Unsere Leistungen auf einen Blick
+    p Wählen Sie die passende Reinigung aus oder senden Sie eine allgemeine Anfrage. Den genauen Umfang stimmen wir persönlich mit Ihnen ab.
+  .service-grid
+    - @services.each do |service|
+      article.service-card
+        = image_tag service.image, alt: "", loading: "lazy", width: 640, height: 360
+        .service-card-body
+          h3 = service.title
+          p = service.description
+          ul
+            - service.tasks.each do |task|
+              li = task
+          .card-actions
+            = link_to "Details", service_path(service.slug)
+            = link_to "Leistung anfragen", contact_path, class: "btn btn-secondary"
+
+section#ergebnisse.section
+  .section-head
+    p.eyebrow Vorher und Nachher
+    h2 Ergebnisse, die man sehen kann.
+    p Beispielhafte Platzhalterdarstellung. Echte Projektbilder erst nach Freigabe einsetzen.
+  .before-after data-controller="before-after"
+    = image_tag "before-cleaning.svg", alt: "Beschrifteter Vorher-Platzhalter einer Reinigungsfläche", width: 960, height: 540
+    .after-layer data-before-after-target="after"
+      = image_tag "after-cleaning.svg", alt: "Beschrifteter Nachher-Platzhalter einer Reinigungsfläche", width: 960, height: 540
+    label.sr-only for="comparison-slider" Vergleichsposition
+    input#comparison-slider type="range" min="0" max="100" value="50" data-before-after-target="slider" data-action="input->before-after#update keydown->before-after#keys"
+
+section#vorteile.section.alt
+  .section-head
+    p.eyebrow Vorteile
+    h2 Reinigung, die zum Objekt passt
+    p Gute Reinigung beginnt nicht erst mit dem Wischmopp. Entscheidend ist, dass Umfang, Rhythmus und Zuständigkeiten vorher klar sind.
+  .benefit-grid
+    - SiteContent.benefits.each_with_index do |benefit, index|
+      article.benefit-card
+        = image_tag "icon-#{index + 1}.svg", alt: "", width: 48, height: 48, loading: "lazy"
+        h3 = benefit[:title]
+        p = benefit[:text]
+
+section.section
+  .section-head
+    p.eyebrow Ablauf
+    h2 Von der Anfrage bis zur Reinigung
+    p Der Ablauf bleibt bewusst einfach: erst verstehen, dann anbieten, dann zuverlässig umsetzen.
+  ol.process-list
+    - SiteContent.process_steps.each_with_index do |step, index|
+      li
+        span = index + 1
+        strong = step[:title]
+        p = step[:text]
+  p.note Das Absenden des Formulars löst keinen kostenpflichtigen Vertrag aus.
+
+section#ueber-uns.section.alt
+  .about-grid
+    = image_tag "team-placeholder.svg", alt: "Platzhalter für ein Portrait- oder Teambild", loading: "lazy", width: 720, height: 540
+    div
+      p.eyebrow Über uns
+      h2 Reinigungsservice mit direkter Abstimmung
+      p = company_config.company["about_text"]
+      p Statt pauschaler Versprechen geht es um das, was vor Ort gebraucht wird: saubere Flächen, nachvollziehbare Aufgaben und eine Kommunikation, die kurz und verbindlich bleibt.
+      dl.contact-facts
+        dt Ansprechpartner
+        dd = company_config.company["representative"]
+        dt Einsatzgebiet
+        dd = company_config.service_area["headline"]
+      = link_to "Anfrage stellen", contact_path, class: "btn btn-primary"
+
+section#referenzen.section
+  .section-head
+    p.eyebrow Referenzen
+    h2 Beispielhafte Arbeiten
+    p Echte Kundenstimmen ergänzen wir erst nach Freigabe. Bis dahin zeigen diese Beispiele, welche Anfragen typischerweise passen.
+  .reference-grid
+    - @references.each do |reference|
+      article.reference-card
+        span = reference[:type]
+        h3 = reference[:title]
+        p = reference[:description]
+        ul
+          - reference[:details].each do |detail|
+            li = detail
+
+section#faq.section.alt
+  .section-head
+    p.eyebrow FAQ
+    h2 Häufige Fragen
+  .faq-list data-controller="accordion"
+    - @faqs.each_with_index do |(question, answer), index|
+      details
+        summary = question
+        p = answer
+  script type="application/ld+json"
+    == { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: @faqs.map { |question, answer| { "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } } } }.to_json
+
+section.final-cta
+  h2 Reinigung für Ihr Objekt anfragen
+  p Beschreiben Sie kurz, welche Räume oder Flächen gereinigt werden sollen. Wir melden uns zur Abstimmung des passenden Angebots.
+  = link_to "Kostenloses Angebot anfordern", contact_path, class: "btn btn-primary"

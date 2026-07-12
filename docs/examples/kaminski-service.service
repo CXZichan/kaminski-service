@@ -1,0 +1,14 @@
+[Unit]
+Description=Kaminski Service Rails App
+After=network.target
+
+[Service]
+Type=simple
+User=deploy
+WorkingDirectory=/var/www/kaminski-service/current
+EnvironmentFile=/etc/kaminski-service/env
+ExecStart=/usr/bin/env bundle exec puma -C config/puma.rb
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

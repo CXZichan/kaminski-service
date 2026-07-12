@@ -1,0 +1,17 @@
+footer.site-footer
+  .footer-grid
+    div
+      h2 = company_config.display_name
+      p Professioneller Gebäude- und Reinigungsservice mit persönlicher Abstimmung und klaren Angeboten.
+    div
+      h2 Kontakt
+      p = company_config.contact_email
+      - if company_config.phone.present? && !company_config.phone.include?("[BITTE")
+        p = company_config.phone
+      p = company_config.full_address
+    div
+      h2 Rechtliches
+      = link_to "Impressum", imprint_path
+      = link_to "Datenschutz", privacy_path
+      = link_to "Cookie-Einstellungen", cookie_settings_path
+  p.footer-note © #{Time.current.year} #{company_config.display_name}. Inhalte mit Platzhaltern vor Veröffentlichung prüfen.

@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports: [ "5432:5432" ]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/kaminski_service_test
+      LEGAL_RELEASE_READY: false
+      CONTACT_RECIPIENT_EMAIL: angebote@kaminski-service.de
+      ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: ci-primary-key-32-bytes-long
+      ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: ci-deterministic-key-32-bytes
+      ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: ci-encryption-salt
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle install
+      - run: bin/rails db:prepare
+      - run: bundle exec rspec
+      - run: bin/rubocop
+      - run: bin/brakeman --no-pager
+      - run: bin/rails site:legal_check
