@@ -29,7 +29,7 @@ jobs:
       ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: ci-deterministic-key-32-bytes
       ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: ci-encryption-salt
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
