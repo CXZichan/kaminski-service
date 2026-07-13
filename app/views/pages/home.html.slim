@@ -3,26 +3,44 @@ section.hero
   .hero-overlay
   .hero-inner
     .hero-copy
-      p.eyebrow Gebäudereinigung in #{company_config.service_area["headline"]}
-      h1 Gebäudereinigung für Celle, Wietze und Umgebung.
-      p.lead Ob Büro, Treppenhaus, Glasfläche oder Privathaushalt: Wir sorgen für gründliche Reinigung mit klarer Abstimmung, planbaren Terminen und einem Angebot, das zu Ihrem Objekt passt.
+      p.eyebrow Gebäudereinigung für #{company_config.service_area["headline"]}
+      h1 Keine Zeit für gründliche Reinigung? Wir kümmern uns darum.
+      p.lead Ob Büro, Treppenhaus, Glasfläche oder Privathaushalt: Wir übernehmen Reinigungsarbeiten in Celle, Wietze und Umgebung mit klarer Abstimmung, planbaren Terminen und einem Angebot, das zu Ihrem Objekt passt.
       ul.trust-list
-        li Persönliche Abstimmung vor dem Angebot
-        li Klare Leistungen ohne unnötige Versprechen
-        li Termine passend zu Objekt und Nutzung
+        li Persönlicher Kontakt statt anonymer Hotline
+        li Klare Leistungen vor dem ersten Termin
+        li Saubere Arbeit für private und gewerbliche Objekte
       .hero-actions
         = link_to "Kostenloses Angebot anfordern", contact_path, class: "btn btn-primary"
         = mail_to company_config.contact_email, "E-Mail schreiben", class: "btn btn-ghost"
       .hero-proof aria-label="Vertrauensmerkmale"
-        span Für Privat- und Gewerbekunden
+        span Rückmeldung zur Abstimmung
         span Hauptsitz in Wietze
         span Einsatzgebiet Celle
+      .hero-review aria-label="Kurzprofil"
+        strong Sauberkeit, auf die man sich verlassen kann.
+        p Wir klären zuerst, was gebraucht wird, und reinigen danach strukturiert statt nach Schema F.
     .hero-form
       = render "contact_requests/form", contact_request: @contact_request
 
 section.trust-bar aria-label="Vertrauenselemente"
   - ["Persönlicher Ansprechpartner", "Schnelle Rückmeldung", "Transparente Angebote", "Flexible Termine", "Sorgfältige Ausführung"].each do |item|
     span = item
+
+section#ueber-uns.section.alt
+  .about-grid
+    = image_tag "team-placeholder.svg", alt: "Platzhalter für ein Portrait- oder Teambild", loading: "lazy", width: 720, height: 540
+    div
+      p.eyebrow Über uns
+      h2 Persönlich abgestimmt statt einfach nur abgearbeitet
+      p = company_config.company["about_text"]
+      p Statt pauschaler Versprechen geht es um das, was vor Ort gebraucht wird: saubere Flächen, nachvollziehbare Aufgaben und eine Kommunikation, die kurz und verbindlich bleibt.
+      dl.contact-facts
+        dt Ansprechpartner
+        dd = company_config.company["representative"]
+        dt Einsatzgebiet
+        dd = company_config.service_area["headline"]
+      = link_to "Anfrage stellen", contact_path, class: "btn btn-primary"
 
 section.section
   .section-head
@@ -98,21 +116,6 @@ section.section
         strong = step[:title]
         p = step[:text]
   p.note Das Absenden des Formulars löst keinen kostenpflichtigen Vertrag aus.
-
-section#ueber-uns.section.alt
-  .about-grid
-    = image_tag "team-placeholder.svg", alt: "Platzhalter für ein Portrait- oder Teambild", loading: "lazy", width: 720, height: 540
-    div
-      p.eyebrow Über uns
-      h2 Reinigungsservice mit direkter Abstimmung
-      p = company_config.company["about_text"]
-      p Statt pauschaler Versprechen geht es um das, was vor Ort gebraucht wird: saubere Flächen, nachvollziehbare Aufgaben und eine Kommunikation, die kurz und verbindlich bleibt.
-      dl.contact-facts
-        dt Ansprechpartner
-        dd = company_config.company["representative"]
-        dt Einsatzgebiet
-        dd = company_config.service_area["headline"]
-      = link_to "Anfrage stellen", contact_path, class: "btn btn-primary"
 
 section#referenzen.section
   .section-head

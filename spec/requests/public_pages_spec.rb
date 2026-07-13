@@ -5,7 +5,7 @@ RSpec.describe "Public pages", type: :request do
     get root_path
 
     expect(response).to have_http_status(:ok)
-    expect(response.body).to include("Gebäudereinigung für Celle, Wietze und Umgebung.")
+    expect(response.body).to include("Keine Zeit für gründliche Reinigung? Wir kümmern uns darum.")
     expect(response.body).to include("Unverbindliche Anfrage stellen")
   end
 

@@ -1,28 +1,28 @@
 class SiteContent
   BENEFITS = [
     {
-      title: "Persönliche Abstimmung",
-      text: "Sie schildern uns Ihr Objekt, die genutzten Bereiche und Ihre Erwartungen. Daraus entsteht ein Leistungsumfang, der wirklich zu Ihrem Bedarf passt."
+      title: "Direkter Draht",
+      text: "Sie sprechen nicht mit einer anonymen Zentrale. Wir klären Ihr Anliegen persönlich und halten Rückfragen kurz."
     },
     {
-      title: "Klare Aufgabenliste",
-      text: "Vor dem Start ist festgelegt, welche Flächen, Räume und Zusatzarbeiten enthalten sind. So bleibt das Angebot nachvollziehbar."
+      title: "Schnelle Rückmeldung",
+      text: "Nach Ihrer Anfrage melden wir uns zeitnah, damit Objekt, Termin und Leistungsumfang schnell geklärt werden können."
     },
     {
-      title: "Planbare Termine",
+      title: "Flexible Termine",
       text: "Ob einmalige Reinigung oder regelmäßiger Turnus: Wir stimmen Termine so ab, dass sie zu Nutzung, Öffnungszeiten und Alltag passen."
     },
     {
-      title: "Saubere Ausführung",
+      title: "Ordentliche Arbeit",
       text: "Wir arbeiten strukturiert, achten auf Details und melden zurück, wenn vor Ort etwas angepasst oder zusätzlich geklärt werden sollte."
+    },
+    {
+      title: "Faire Angebote",
+      text: "Vor dem Start ist festgelegt, welche Flächen, Räume und Zusatzarbeiten enthalten sind. So bleibt das Angebot nachvollziehbar."
     },
     {
       title: "Privat und gewerblich",
       text: "Anfragen sind für Wohnungen, Häuser, Büros, Praxen, Treppenhäuser, Ladenflächen und weitere Objekte in Celle und Wietze möglich."
-    },
-    {
-      title: "Direkte Kommunikation",
-      text: "Kurze Wege, klare Rückfragen und eine verbindliche Abstimmung helfen, Missverständnisse vor und während der Reinigung zu vermeiden."
     }
   ].freeze
 
